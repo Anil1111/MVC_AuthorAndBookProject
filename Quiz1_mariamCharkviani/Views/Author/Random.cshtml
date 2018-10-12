@@ -1,0 +1,35 @@
+﻿@model Quiz1_mariamCharkviani.ViewModel.RandomAuthorViewModel
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Author.FullName</h2>
+@if (Model.Books.Count == 0)
+{
+    <h1>This author has no published books yet</h1>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>ISBN</th>
+                <th>Title</th>
+                <th>Date Published</th>
+                <th>Number of Pages</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Books)
+            {
+                <tr>
+                    <td>@item.ISBN</td>
+                    <td>@Html.ActionLink(item.Title, "Details", "Book", new { id = item.Id }, null)</td>
+                    <td>@item.DatePublished.ToLongDateString()</td>
+                    <td>@item.NumberOfPages</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

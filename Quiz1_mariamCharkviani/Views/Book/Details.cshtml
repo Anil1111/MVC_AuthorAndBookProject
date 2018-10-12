@@ -1,0 +1,28 @@
+﻿@model Quiz1_mariamCharkviani.Models.Book
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+<br />
+
+<p><b>ISBN:</b></p>
+<p>@Model.ISBN</p>
+<br />
+
+<p><b>Date published:</b></p>
+<p>@Model.DatePublished.ToLongDateString()</p>
+<br />
+
+<p><b>Number Of Pages:</b></p>
+<p>@Model.NumberOfPages</p>
+<br />
+
+<p><b>Summary:</b></p>
+<p>@Model.Summary</p>
+<br />
+
+<p>
+@Html.ActionLink("Back", "Index", "Author")
+</p>

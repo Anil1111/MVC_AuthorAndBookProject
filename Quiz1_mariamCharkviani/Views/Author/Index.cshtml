@@ -1,0 +1,34 @@
+﻿@using Quiz1_mariamCharkviani.Models
+@model IEnumerable<Author>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Authors</h2>
+@if(Model.Count() == 0)
+{
+    <p>We don't have any registered authors yet :(</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Author Name</th>
+                <th>Date Of Birth</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var author in Model)
+            {
+            <tr>
+                <td>@author.Id</td>
+                <td>@Html.ActionLink(author.FullName, "Details", "Author", new { id = author.Id }, null)</td>
+                <td>@author.DateOfBirth.ToLongDateString()</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
